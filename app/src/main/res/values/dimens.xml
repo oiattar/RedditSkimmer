@@ -11,4 +11,8 @@
     <dimen name="drawer_search_layout_height">56dp</dimen>
 
     <dimen name="drawer_header_elevation">2dp</dimen>
+
+    <item name="image_height_ratio" format="float" type="dimen">0.6</item>
+    <item name="post_list_item_height_multiplier" format="float" type="dimen">2</item>
+    <item name="view_width_ratio_left" format="float" type="dimen">0.1</item>
 </resources>

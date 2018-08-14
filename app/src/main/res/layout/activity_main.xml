@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:focusable="true"
-                    android:contentDescription="@string/cd_start_search"
+                    android:contentDescription="@string/start_search_desc"
                     style="?android:attr/borderlessButtonStyle"
                     android:src="@drawable/ic_search_black_24dp"/>
 
