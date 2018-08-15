@@ -19,7 +19,7 @@ import cz.msebera.android.httpclient.message.BasicHeader;
 
 class RedditRestClient {
 
-    private static final String LOG_TAG = RedditRestClient.class.getSimpleName();
+    private static final String TAG = RedditRestClient.class.getSimpleName();
 
     //These 3 constants are JSON response parameter names (defined in Reddit API) and also
     //HTTP PUT parameter names and also they are used as keys to write into shared preferences
@@ -135,14 +135,14 @@ class RedditRestClient {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 String respStr = response.toString();
                 int maxLength = 300;
-                Log.d(LOG_TAG, relUrl + " response: " + (respStr.length() > maxLength ?
+                Log.d(TAG, relUrl + " response: " + (respStr.length() > maxLength ?
                         respStr.substring(0, maxLength - 1) + "..." : respStr));
                 try {
                     if (respParNames != null) {
                         for (String respParName : respParNames) {
                             String respParVal = response.getString(respParName);
                             Util.setSharedString(mContext, respParName, respParVal);
-                            Log.d(LOG_TAG, relUrl + " " + respParName + ": " + respParVal);
+                            Log.d(TAG, relUrl + " " + respParName + ": " + respParVal);
                         }
                     }
                     if (resHandler != null) resHandler.onSuccess(response);
@@ -154,7 +154,7 @@ class RedditRestClient {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 String respStr = response.toString();
                 int maxLength = 300;
-                Log.d(LOG_TAG, relUrl + " response: " + (respStr.length() > maxLength ?
+                Log.d(TAG, relUrl + " response: " + (respStr.length() > maxLength ?
                         respStr.substring(0, maxLength - 1) + "..." : respStr));
                 if (resHandler != null) resHandler.onSuccess(response);
             }
@@ -173,11 +173,11 @@ class RedditRestClient {
                 String msg = "Failure status code: " + statusCode;
                 if (responseString != null)
                     msg += ", response: " + responseString;
-                Log.d(LOG_TAG, relUrl + " " + msg);
+                Log.d(TAG, relUrl + " " + msg);
                 if (headers != null) {
                     int i = 0;
                     for (Header h : headers) {
-                        Log.d(LOG_TAG, "header " + i + ":" + h.toString());
+                        Log.d(TAG, "header " + i + ":" + h.toString());
                         i++;
                     }
                 }
@@ -314,7 +314,7 @@ class RedditRestClient {
     }
 
     /**
-     * According to Reddit API rules, good citizens should call this when they don't need access
+     * According to Reddit API rules, good citizens should call this time they don't need access
      * token anymore. We always need access token, so never call this function.
      * Implemented it just in case...
      */

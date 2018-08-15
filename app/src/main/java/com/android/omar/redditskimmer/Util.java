@@ -39,7 +39,7 @@ import com.android.omar.redditskimmer.RedditContract.*;
 
 class Util {
 
-    public static final String LOG_TAG = Util.class.getSimpleName();
+    public static final String TAG = Util.class.getSimpleName();
     public static SharedPreferences getSharedPreferences(Context c) {
         return c.getSharedPreferences(Constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
     }
@@ -88,7 +88,7 @@ class Util {
             cv.put(UserEntry.COLUMN_REFRESH_TOKEN,
                     Util.getSharedString(c, RedditRestClient.API_REFRESH_TOKEN));
         } catch (JSONException e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage(), e);
             e.printStackTrace();
         }
         c.getContentResolver()
@@ -171,7 +171,7 @@ class Util {
                 vec.add(cv);
             }
         } catch (JSONException e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage(), e);
             e.printStackTrace();
         }
         if ( vec != null && vec.size() > 0 ) {
@@ -214,7 +214,7 @@ class Util {
                 vec.add(cv);
             }
         } catch (JSONException e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage(), e);
             e.printStackTrace();
         }
         if ( vec != null && vec.size() > 0 ) {
@@ -348,7 +348,7 @@ class Util {
                 vec.add(cv);
             }
         } catch (JSONException e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage(), e);
             e.printStackTrace();
         }
         if ( vec != null && vec.size() > 0 ) {
@@ -520,7 +520,7 @@ class Util {
 
     public static CharSequence getSubredditNameWithR(Context c, String subredditname) {
         SpannableStringBuilder res = new SpannableStringBuilder(
-                Util.color(ContextCompat.getColor(c, R.color.colorR),
+                Util.color(ContextCompat.getColor(c, android.R.color.darker_gray),
                         c.getString(R.string.subreddit_prefix)));
         res.append(subredditname);
         return res;

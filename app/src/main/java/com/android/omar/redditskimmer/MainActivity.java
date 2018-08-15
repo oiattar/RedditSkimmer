@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
@@ -39,7 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor> {
+        implements LoaderManager.LoaderCallbacks<Cursor>, SelectUserDialog.SelectUserDialogListener {
 
     private SubredditListAdapter mSubredditListAdapter;
     private PostsListAdapter mPostListAdapter;
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // register broadcast receiver for when user name retrieved from Reddit
+        // register broadcast receiver for time user name retrieved from Reddit
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.NEW_USER_EVENT);
         filter.addAction(Constants.SUBREDDITS_RETRIEVED_EVENT);
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity
         }
         getLoaderManager().initLoader(POST_LIST_LOADER, null, this);
 
-        // update user name in drawer when log in
+        // update user name in drawer time log in
         updateNavigationViewHeader();
 
         // set up swipe refresh layouts
@@ -224,6 +225,12 @@ public class MainActivity extends AppCompatActivity
 
         // retrieve subreddit list if empty
         retrieveSubreddits();
+    }
+
+    @Override
+    protected void onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
     }
 
     /**
@@ -304,17 +311,6 @@ public class MainActivity extends AppCompatActivity
                 });
     }
 
-    private void updateNavigationViewHeader() {
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        TextView usernameView = navigationView.findViewById(R.id.username);
-        String username = Util.getUserName(this);
-        if (username == null) {
-            usernameView.setText(R.string.nav_header_title);
-        } else {
-            usernameView.setText(username);
-        }
-    }
-
     private void setSubredditLoaderMode(Boolean isSearchResultsMode, Boolean isLoggedInUserMode) {
         boolean isRestartRequired = false;
         if (isSearchResultsMode != null && mLoaderSearchMode != isSearchResultsMode) {
@@ -387,7 +383,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void retrieveSubreddits() {
-        //Retrieve list of subreddits when list is empty
+        //Retrieve list of subreddits time list is empty
         Util.getCount(this, SubredditEntry.CONTENT_URI, null, null);
         if (0 >= Util.getCount(this, SubredditEntry.CONTENT_URI, null, null)) {
             refreshSubreddits();
@@ -482,6 +478,77 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void updateNavigationViewHeader() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        TextView usernameView = navigationView.findViewById(R.id.username);
+        String username = Util.getUserName(this);
+        if (username == null) {
+            usernameView.setText(R.string.nav_header_title);
+        } else {
+            usernameView.setText(username);
+        }
+    }
+
+    public void onLogInPressed(View v) {
+        DialogFragment dialog = new SelectUserDialog();
+        dialog.show(getSupportFragmentManager(), "SelectUserDialog");
+    }
+
+    /**
+     * Handle click on 'OK' button on 'Select User' dialog
+     * @param dialog
+     */
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        SelectUserDialog.Result res = ((SelectUserDialog)dialog).getResult();
+        if (res == SelectUserDialog.Result.NoChanges)
+            return;
+
+        if (res == SelectUserDialog.Result.NewUser) {
+            Intent intent = new Intent(this, RedditAuthService.class);
+            startActivityForResult(intent, RedditAuthService.REQUEST_CODE_AUTHORIZATION);
+            return;
+        }
+
+        updateNavigationViewHeader();
+        updateSearchUI(false);
+        setSubredditLoaderMode(false,res == SelectUserDialog.Result.UserChangedToLoggedOn);
+        Util.deleteSubredditsFromDb(this);
+
+        if (res == SelectUserDialog.Result.UserChangedToLoggedOn) {
+            new RedditRestClient(this).beginRetrievingUserName(null);
+        } else { //UserChangedToAnonymous
+            new RedditRestClient(this).beginRetrievingSubreddits(
+                    RedditRestClient.SubrdtDisplayOrder.DEFAULT);
+        }
+    }
+
+    /**
+     * Handles results from Authorization activity
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        if (requestCode == RedditAuthService.REQUEST_CODE_AUTHORIZATION) {
+            if (resultCode != RESULT_OK) {
+                Toast.makeText(MainActivity.this, getString(R.string.auth_failed),
+                        Toast.LENGTH_LONG).show();
+            } else {
+                updateNavigationViewHeader();
+                updateSearchUI(false);
+                setSubredditLoaderMode(false, true);
+                Util.deleteSubredditsFromDb(this);
+            }
+        }
+    }
+
+    /**
+     * Handle click on 'Cancel' button on 'Select User' dialog
+     * @param dialog
+     */
+    public void onDialogNegativeClick(DialogFragment dialog) {
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -490,27 +557,5 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

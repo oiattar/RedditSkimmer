@@ -14,7 +14,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class RedditAuthService extends AppCompatActivity {
-    private static final String LOG_TAG = RedditAuthService.class.getSimpleName();
+    private static final String TAG = RedditAuthService.class.getSimpleName();
     public static int REQUEST_CODE_AUTHORIZATION = 1;
 
     @Override
@@ -45,18 +45,18 @@ public class RedditAuthService extends AppCompatActivity {
             boolean isCodeReceived = false;
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.i(LOG_TAG, "shouldOverrideUrlLoading, url: " + url);
+                Log.i(TAG, "shouldOverrideUrlLoading, url: " + url);
                 return false;
             }
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                Log.i(LOG_TAG, "onPageStarted, url: " + url);
+                Log.i(TAG, "onPageStarted, url: " + url);
             }
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                Log.i(LOG_TAG, "onPageFinished, url: " + url);
+                Log.i(TAG, "onPageFinished, url: " + url);
 
                 if (isCodeReceived) return;
                 Uri uri = Uri.parse(url);

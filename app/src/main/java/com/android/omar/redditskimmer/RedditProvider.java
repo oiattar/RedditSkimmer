@@ -11,7 +11,7 @@ import android.net.Uri;
 import com.android.omar.redditskimmer.RedditContract.*;
 
 public class RedditProvider extends ContentProvider {
-    public static final String LOG_TAG = RedditProvider.class.getSimpleName();
+    public static final String TAG = RedditProvider.class.getSimpleName();
 
     // The URI Matcher used by this content provider.
     private static final UriMatcher sUriMatcher = buildUriMatcher();

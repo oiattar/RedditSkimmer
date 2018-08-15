@@ -49,7 +49,7 @@
                 />
 
             <TextView
-                android:id="@+id/post_when"
+                android:id="@+id/post_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/post_subreddit"
@@ -63,8 +63,8 @@
                 android:id="@+id/post_domain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/post_when"
-                android:layout_toRightOf="@id/post_when"
+                android:layout_toEndOf="@id/post_time"
+                android:layout_toRightOf="@id/post_time"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
@@ -86,7 +86,7 @@
             android:layout_marginEnd="4dp"
             android:layout_height="2dp"
             android:layout_below="@+id/post_top_row"
-            android:background="@drawable/dashed_line_shape"/>
+            android:background="@drawable/dashed_line"/>
 
         <TextView
             android:id="@+id/post_title"
@@ -113,7 +113,7 @@
             android:layout_marginEnd="4dp"
             android:layout_height="2dp"
             android:layout_above="@+id/post_bottom_row"
-            android:background="@drawable/dashed_line_shape"/>
+            android:background="@drawable/dashed_line"/>
 
         <!-- BOTTOM ROW -->
         <RelativeLayout

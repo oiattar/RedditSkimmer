@@ -69,7 +69,7 @@ public class PostsListAdapter extends CursorAdapter {
         vh.thumb.setLayoutParams(pars);
         vh.subreddit.setText(Util.getSubredditNameWithR(mContext,
                 c.getString(MainActivity.COL_SUBREDDIT)));
-        vh.when.setText(Util.getRelativeLocalTimeFromUTCtime((long)c.getInt(MainActivity
+        vh.time.setText(Util.getRelativeLocalTimeFromUTCtime((long)c.getInt(MainActivity
                 .COL_CREATED_UTC)));
         vh.domain.setText(c.getString(MainActivity.COL_DOMAIN));
         vh.title.setText(c.getString(MainActivity.COL_TITLE));
@@ -104,7 +104,7 @@ public class PostsListAdapter extends CursorAdapter {
         ImageView thumb;
         FrameLayout thumbHolder;
         TextView subreddit;
-        TextView when;
+        TextView time;
         TextView domain;
         TextView title;
         TextView score;
@@ -125,7 +125,7 @@ public class PostsListAdapter extends CursorAdapter {
             this.imgWidth = imgWidth;
             this.imgHeight = imgHeight;
             subreddit = view.findViewById(R.id.post_subreddit);
-            when = view.findViewById(R.id.post_when);
+            time = view.findViewById(R.id.post_time);
             domain = view.findViewById(R.id.post_domain);
             title = view.findViewById(R.id.post_title);
             score = view.findViewById(R.id.post_score);
