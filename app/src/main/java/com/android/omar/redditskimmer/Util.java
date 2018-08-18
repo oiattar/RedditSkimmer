@@ -389,7 +389,7 @@ class Util {
     }
 
     public static String getRelativeTime(long timeSec) {
-        return DateUtils.getRelativeTimeSpanString(1000 * (long)timeSec).toString();
+        return DateUtils.getRelativeTimeSpanString(1000 * timeSec).toString();
     }
 
     public static String getRelativeLocalTimeFromUTCtime(long timeSec) {

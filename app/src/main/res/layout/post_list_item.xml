@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:contentDescription="@string/post_image_desc"
             android:src="@drawable/reddit_logo"
             android:layout_gravity="center" />
     </FrameLayout>
@@ -39,7 +40,6 @@
                 android:id="@+id/post_subreddit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
@@ -50,7 +50,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/post_subreddit"
-                android:layout_toRightOf="@id/post_subreddit"
                 android:layout_margin="4dp"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
@@ -60,9 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/post_time"
-                android:layout_toRightOf="@id/post_time"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
                 android:ellipsize="end"
@@ -122,7 +119,6 @@
                 android:id="@+id/post_num_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
@@ -133,7 +129,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/post_num_comments"
-                android:layout_toRightOf="@id/post_num_comments"
                 android:layout_margin="4dp"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
@@ -144,8 +139,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/post_score"
-                android:layout_toRightOf="@id/post_score"
-                android:layout_toLeftOf="@+id/post_position"
                 android:layout_toStartOf="@+id/post_position"
                 android:layout_margin="4dp"
                 android:ellipsize="end"
@@ -156,7 +149,6 @@
                 android:id="@+id/post_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="4dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />

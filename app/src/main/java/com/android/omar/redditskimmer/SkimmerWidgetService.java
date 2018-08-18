@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -27,12 +26,11 @@ class SkimmerRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory
     public static final int COL_SUBREDDIT = 6;
 
     private Context mContext;
-    private int mAppWidgetId;
     Cursor mCursor;
 
     public SkimmerRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
-        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+        int mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
     }
 
     @Override
@@ -47,8 +45,6 @@ class SkimmerRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
         Uri uri = RedditContract.LinkEntry.buildUriWithSubpath(RedditContract.SUB_PATH_LINKS_TOP_N_WIDGET);
         mCursor = mContext.getContentResolver().query(uri, null, null, null, " ASC LIMIT 5");
-
-        boolean curNull = mCursor == null;
     }
 
     @Override

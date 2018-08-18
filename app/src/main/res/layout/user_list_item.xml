@@ -10,7 +10,6 @@
         android:text="@string/username"
         android:contentDescription="@string/select_user_desc"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/users_list_item_margin"
         android:layout_marginStart="@dimen/users_list_item_margin"
         android:clickable="true"
         android:focusable="true"

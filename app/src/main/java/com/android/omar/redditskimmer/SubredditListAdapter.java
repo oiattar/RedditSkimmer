@@ -32,11 +32,6 @@ public class SubredditListAdapter extends CursorAdapter {
         mUnsubHint = mActivity.getString(R.string.unsub_hint);
     }
 
-    @Override
-    public View getView(int pos, View convertView, ViewGroup parent) {
-        return super.getView(pos, convertView, parent);
-    }
-
     private void highlightTextInTextView(TextView v, String text, String highlightString) {
         int length = highlightString != null ? highlightString.length() : 0;
         v.setContentDescription(text);
@@ -167,7 +162,7 @@ public class SubredditListAdapter extends CursorAdapter {
             view.getLocationOnScreen(loc);
             int x = loc[0] + xOffset;
             int y = loc[1] + yOffset;
-            mToast.setGravity(Gravity.TOP | Gravity.LEFT, x, y);
+            mToast.setGravity(Gravity.TOP | Gravity.START, x, y);
         }
         mToast.show();
     }

@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity
 
     private static final int SUBREDDIT_LIST_LOADER = 0;
     private static final int POST_LIST_LOADER = 1;
-    private int mSubredditListPos = ListView.INVALID_POSITION;
-    private int mPostListPos = ListView.INVALID_POSITION;
 
     private static String mSearchString;
     private boolean mIsRefreshingSubreddits = false;
@@ -444,6 +442,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         int id = loader.getId();
+        int mSubredditListPos = ListView.INVALID_POSITION;
         if (id == SUBREDDIT_LIST_LOADER) {
             mSubredditListAdapter.swapCursor(cursor);
             if (mSubredditListPos != ListView.INVALID_POSITION) {
@@ -454,6 +453,7 @@ public class MainActivity extends AppCompatActivity
             toggleSubredditRefreshIndicator();
         } else if (id == POST_LIST_LOADER) {
             mPostListAdapter.swapCursor(cursor);
+            int mPostListPos = ListView.INVALID_POSITION;
             if (mPostListPos != ListView.INVALID_POSITION) {
                 mPostsListView.smoothScrollToPosition(mSubredditListPos);
             }

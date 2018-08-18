@@ -24,7 +24,6 @@
 
         <!-- TOP ROW -->
         <RelativeLayout
-            android:id="@+id/pager_top_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -35,7 +34,6 @@
                 android:id="@+id/pager_subreddit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
@@ -46,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
                 android:ellipsize="end"
@@ -84,7 +81,6 @@
 
         <!-- MIDDLE ROW -->
         <RelativeLayout
-            android:id="@+id/pager_middle_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -105,8 +101,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/pager_author"
-                android:layout_toLeftOf="@id/pager_author"
-                android:layout_toRightOf="@+id/pager_position"
                 android:layout_toStartOf="@+id/pager_position"
                 android:layout_margin="4dp"
                 android:singleLine="true"
@@ -116,7 +110,6 @@
                 android:id="@+id/pager_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="4dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
@@ -125,7 +118,6 @@
 
         <!--FULL SIZE IMAGE-->
         <FrameLayout
-            android:id="@+id/pager_image_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -133,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/reddit_logo"
+                android:contentDescription="@string/post_image_desc"
                 android:layout_gravity="center"
                 android:onClick="onLinkClick" />
         </FrameLayout>
@@ -152,7 +145,6 @@
 
         <!-- BOTTOM ROW -->
         <RelativeLayout
-            android:id="@+id/pager_bottom_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -163,9 +155,7 @@
                 android:id="@+id/pager_num_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/pager_score"
                 android:layout_toStartOf="@+id/pager_score"
                 android:layout_margin="4dp"
                 android:singleLine="true"
@@ -176,7 +166,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />

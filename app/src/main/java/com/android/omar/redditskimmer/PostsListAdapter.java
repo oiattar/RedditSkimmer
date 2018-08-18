@@ -43,11 +43,6 @@ public class PostsListAdapter extends CursorAdapter {
     }
 
     @Override
-    public View getView(int pos, View convertView, ViewGroup parent) {
-        return super.getView(pos, convertView, parent);
-    }
-
-    @Override
     public void bindView(final View view, Context context, Cursor c) {
         mViewWidth = view.getWidth();
         final ViewHolder vh = (ViewHolder)view.getTag();
@@ -108,8 +103,6 @@ public class PostsListAdapter extends CursorAdapter {
         TextView numComments;
         TextView author;
         TextView position;
-        RelativeLayout topRow;
-        RelativeLayout bottomRow;
         int imgWidth;
         int imgHeight;
         public ViewHolder(View view, int layoutHeight, int imgWidth, int imgHeight) {
@@ -129,8 +122,6 @@ public class PostsListAdapter extends CursorAdapter {
             numComments = view.findViewById(R.id.post_num_comments);
             author = view.findViewById(R.id.post_author);
             position = view.findViewById(R.id.post_position);
-            topRow = view.findViewById(R.id.post_top_row);
-            bottomRow = view.findViewById(R.id.post_bottom_row);
         }
     }
 

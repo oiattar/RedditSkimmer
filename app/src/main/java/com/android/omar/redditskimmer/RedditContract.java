@@ -31,7 +31,7 @@ public class RedditContract {
         public static final String COLUMN_ACCESS_TOKEN = "access_token";
         public static final String COLUMN_REFRESH_TOKEN = "refresh_token";
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
     }
@@ -53,7 +53,7 @@ public class RedditContract {
         public static final String COLUMN_SUBMISSION_TYPE = "submission_type";
         public static final String COLUMN_USER_IS_SUBSCRIBER = "user_is_subscriber";
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
         public static Uri buildUriWithSubpath(String subPath) {
@@ -71,7 +71,7 @@ public class RedditContract {
         public static final String TABLE_NAME = "subscr";
         public static final String COLUMN_NAME = "name";
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
     }
@@ -86,7 +86,7 @@ public class RedditContract {
         public static final String TABLE_NAME = "search";
         public static final String COLUMN_NAME = "name";
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
     }
@@ -125,7 +125,7 @@ public class RedditContract {
         public static final String COLUMN_IMG_LAND_WIDTH = "img_land_width";
         public static final String COLUMN_IMG_LAND_HEIGH = "img_land_height";
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
         public static Uri buildUriWithSubpath(String subPath) {
@@ -145,7 +145,7 @@ public class RedditContract {
         public static final String COLUMN_POSITION = "position";
         public static final String COLUMN_COUNT = "count"; //virtual column (in query only)
 
-        public static final Uri buildUriWithRowId (long rowId) {
+        public static Uri buildUriWithRowId (long rowId) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(rowId)).build();
         }
     }

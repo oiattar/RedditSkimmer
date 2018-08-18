@@ -102,8 +102,4 @@ public class WebViewActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_web_view, menu);
         return true;
     }
-
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 }
