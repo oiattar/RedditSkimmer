@@ -27,12 +27,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class PlaceholderFragment extends Fragment {
+public class PostDetailFragment extends Fragment {
 
-    public static final String TAG = PlaceholderFragment.class.getSimpleName();
+    public static final String TAG = PostDetailFragment.class.getSimpleName();
 
     static final int COL_LINK_ROWID = 0;
     static final int COL_POSITION = 1;
@@ -80,16 +77,16 @@ public class PlaceholderFragment extends Fragment {
     static Cursor mCursor;
     static Context mContext;
 
-    public PlaceholderFragment() {
+    public PostDetailFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static PlaceholderFragment newInstance(int position, Bundle bundle, Cursor cursor,
-                                                  Context context) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static PostDetailFragment newInstance(int position, Bundle bundle, Cursor cursor,
+                                                 Context context) {
+        PostDetailFragment fragment = new PostDetailFragment();
         Bundle args = (Bundle) bundle.clone();
         args.putInt(Constants.EXTRA_LINK_POSITION, position);
         fragment.setArguments(args);
@@ -229,7 +226,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_post_with_comments, container,
+        View rootView = inflater.inflate(R.layout.fragment_post_detail, container,
                 false);
         unbinder = ButterKnife.bind(this, rootView);
         bindView(rootView);

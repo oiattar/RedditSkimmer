@@ -149,7 +149,7 @@ public class PostsListAdapter extends CursorAdapter {
             int curPos = mListView.pointToPosition((int)e.getX(), (int)e.getY());
             Cursor c = (Cursor)getItem(curPos);
             if (c != null) {
-                Intent intent = new Intent(mContext, PostWithCommentsActivity.class);
+                Intent intent = new Intent(mContext, PostDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_SUBREDDIT_NAME,
                         c.getString(MainActivity.COL_SUBREDDIT));
                 intent.putExtra(Constants.EXTRA_LINK_COUNT, c.getInt(MainActivity.COL_COUNT));

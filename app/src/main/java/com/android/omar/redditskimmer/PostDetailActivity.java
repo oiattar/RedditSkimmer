@@ -19,15 +19,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PostWithCommentsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class PostDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    public static final String TAG = PostWithCommentsActivity.class.getSimpleName();
+    public static final String TAG = PostDetailActivity.class.getSimpleName();
 
     static final int COL_TITLE = 3;
     static final int COL_URL = 15;
@@ -48,7 +45,7 @@ public class PostWithCommentsActivity extends AppCompatActivity implements Loade
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_with_comments);
+        setContentView(R.layout.activity_post_detail);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -95,7 +92,7 @@ public class PostWithCommentsActivity extends AppCompatActivity implements Loade
     public void onBackPressed() {
         int position = mViewPager.getCurrentItem();
         if (position >= 0 && position < mLinkCount) {
-            Util.updateSubredditPositionInDb(PostWithCommentsActivity.this, mSubreddit, position);
+            Util.updateSubredditPositionInDb(PostDetailActivity.this, mSubreddit, position);
         }
         super.onBackPressed();
     }
@@ -196,9 +193,9 @@ public class PostWithCommentsActivity extends AppCompatActivity implements Loade
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position, getIntent().getExtras(), mCursorLinks,
-                    PostWithCommentsActivity.this);
+            // Return a PostDetailFragment (defined as a static inner class below).
+            return PostDetailFragment.newInstance(position, getIntent().getExtras(), mCursorLinks,
+                    PostDetailActivity.this);
         }
         @Override
         public int getCount() {

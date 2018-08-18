@@ -13,8 +13,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-public class RedditAuthService extends AppCompatActivity {
-    private static final String TAG = RedditAuthService.class.getSimpleName();
+public class RedditAuthActivity extends AppCompatActivity {
+    private static final String TAG = RedditAuthActivity.class.getSimpleName();
     public static int REQUEST_CODE_AUTHORIZATION = 1;
 
     @Override
@@ -69,11 +69,11 @@ public class RedditAuthService extends AppCompatActivity {
                         String state = uri.getQueryParameter("state");
                         if (state != null && state.equals(Constants.OAUTH_STATE)) {
                             isCodeReceived = true;
-                            new RedditRestClient(RedditAuthService.this)
+                            new RedditRestClient(RedditAuthActivity.this)
                                     .beginRetrievingNewUserAccessTokenAndChangingUser(code);
                             activityResultCode = RESULT_OK;
                         } else {
-                            Toast.makeText(RedditAuthService.this,
+                            Toast.makeText(RedditAuthActivity.this,
                                     "Authorization error: unexpected state '" +
                                             (state == null ? "null" : state) + "'", Toast.LENGTH_LONG)
                                     .show();
@@ -81,12 +81,12 @@ public class RedditAuthService extends AppCompatActivity {
                         canCloseDialog = true;
                     }
                 } else {
-                    Toast.makeText(RedditAuthService.this,
+                    Toast.makeText(RedditAuthActivity.this,
                             "Authorization error: " + error, Toast.LENGTH_LONG).show();
                     if (error.equals("access_denied")) canCloseDialog = true;
                 }
-                RedditAuthService.this.setResult(activityResultCode);
-                if (canCloseDialog) RedditAuthService.this.finish();
+                RedditAuthActivity.this.setResult(activityResultCode);
+                if (canCloseDialog) RedditAuthActivity.this.finish();
             }
         });
     }

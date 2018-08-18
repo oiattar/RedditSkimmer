@@ -37,7 +37,7 @@ public class SkimmerWidgetProvider extends AppWidgetProvider {
 
     private static void setItemOnClickIntent(Context context, RemoteViews widgetLayoutRemoteView, int widgetId) {
         // pendingIntent for items in list
-        Intent intent = new Intent(context, PostWithCommentsActivity.class);
+        Intent intent = new Intent(context, PostDetailActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.setAction(Constants.ACTION_SHOW_LINKS_FOR_SUBREDDIT);

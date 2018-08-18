@@ -22,8 +22,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -504,8 +502,8 @@ public class MainActivity extends AppCompatActivity
             return;
 
         if (res == SelectUserDialog.Result.NewUser) {
-            Intent intent = new Intent(this, RedditAuthService.class);
-            startActivityForResult(intent, RedditAuthService.REQUEST_CODE_AUTHORIZATION);
+            Intent intent = new Intent(this, RedditAuthActivity.class);
+            startActivityForResult(intent, RedditAuthActivity.REQUEST_CODE_AUTHORIZATION);
             return;
         }
 
@@ -529,7 +527,7 @@ public class MainActivity extends AppCompatActivity
      * @param data
      */
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if (requestCode == RedditAuthService.REQUEST_CODE_AUTHORIZATION) {
+        if (requestCode == RedditAuthActivity.REQUEST_CODE_AUTHORIZATION) {
             if (resultCode != RESULT_OK) {
                 Toast.makeText(MainActivity.this, getString(R.string.auth_failed),
                         Toast.LENGTH_LONG).show();
