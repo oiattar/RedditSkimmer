@@ -18,4 +18,10 @@
     <item name="image_height_ratio" format="float" type="dimen">0.6</item>
     <item name="post_list_item_height_multiplier" format="float" type="dimen">2</item>
     <item name="view_width_ratio_left" format="float" type="dimen">0.1</item>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

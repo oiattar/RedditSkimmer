@@ -67,15 +67,12 @@ public class PostsListAdapter extends CursorAdapter {
             pars.width = ViewGroup.LayoutParams.WRAP_CONTENT;
         }
         vh.thumb.setLayoutParams(pars);
-        vh.subreddit.setText(Util.getSubredditNameWithR(mContext,
-                c.getString(MainActivity.COL_SUBREDDIT)));
-        vh.time.setText(Util.getRelativeLocalTimeFromUTCtime((long)c.getInt(MainActivity
-                .COL_CREATED_UTC)));
+        vh.subreddit.setText(Util.getSubredditNameWithR(mContext, c.getString(MainActivity.COL_SUBREDDIT)));
+        vh.time.setText(Util.getRelativeLocalTimeFromUTCtime((long)c.getInt(MainActivity.COL_CREATED_UTC)));
         vh.domain.setText(c.getString(MainActivity.COL_DOMAIN));
         vh.title.setText(c.getString(MainActivity.COL_TITLE));
         vh.score.setText(Util.bold(c.getString(MainActivity.COL_SCORE)));
-        vh.numComments.setText(String.format(mContext.getString(R.string.num_commments),
-                c.getInt(MainActivity.COL_NUM_COMMENTS)));
+        vh.numComments.setText(String.format(mContext.getString(R.string.num_commments), c.getInt(MainActivity.COL_NUM_COMMENTS)));
         vh.author.setText(Util.bold(c.getString(MainActivity.COL_AUTHOR)));
         int pos = c.getInt(MainActivity.COL_POSITION);
         int count = c.getInt(MainActivity.COL_COUNT);

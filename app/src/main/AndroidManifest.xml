@@ -31,19 +31,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.android.omar.redditskimmer.MainActivity" />
         </activity>
-
         <activity
             android:name=".WebViewActivity"
             android:label=""
             android:parentActivityName=".PostWithCommentsActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RedditAuthService" />
 
         <provider
             android:name=".RedditProvider"
             android:authorities="com.android.omar.redditskimmer"
             android:exported="true" />
+
+        <receiver android:name=".SkimmerWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/skimmer_widget_info" />
+        </receiver>
+        <service
+            android:name=".SkimmerWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

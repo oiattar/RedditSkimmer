@@ -65,4 +65,6 @@
     <string name="cliboard_label">URL from RedditSkimmer</string>
     <string name="clipboard_text">URL copied to clipboard</string>
     <string name="username">username</string>
+
+    <string name="empty_widget_view_text">No subreddit posts</string>
 </resources>

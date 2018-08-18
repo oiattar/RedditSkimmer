@@ -142,8 +142,7 @@ public class RedditProvider extends ContentProvider {
             }
             case LINK: {
                 String lastPathSegment = uri.getLastPathSegment();
-                if (lastPathSegment.equals(RedditContract.SUB_PATH_LINKS_TOP_N)
-                        || lastPathSegment.equals(RedditContract.SUB_PATH_LINKS_TOP_N_WIDGET)) {
+                if (lastPathSegment.equals(RedditContract.SUB_PATH_LINKS_TOP_N) || lastPathSegment.equals(RedditContract.SUB_PATH_LINKS_TOP_N_WIDGET)) {
                     /**
                      select _id, (select count(*) from links as links_for_position where
                      links_for_position.subreddit = links_main.subreddit and
@@ -245,13 +244,13 @@ public class RedditProvider extends ContentProvider {
                 }
                 else {
                     retCursor = db.query(LinkEntry.TABLE_NAME, projection,
-                            selection, selectionArgs, /*groupBy*/ null, /*having*/ null, sortOrder);
+                            selection, selectionArgs, null, null, sortOrder);
                 }
                 break;
             }
             case CURR_LINK: {
                 retCursor = db.query(CurrLinkEntry.TABLE_NAME, projection,
-                        selection, selectionArgs, /*groupBy*/ null, /*having*/ null, sortOrder);
+                        selection, selectionArgs, null, null, sortOrder);
                 break;
             }
             default: {
