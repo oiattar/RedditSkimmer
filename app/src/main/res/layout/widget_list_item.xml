@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:orientation="horizontal">
 
         <TextView
@@ -19,9 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_margin="4dp"
             android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:text="r/Jokes"/>
 
         <TextView
@@ -32,9 +35,9 @@
             android:layout_toRightOf="@id/widget_post_subreddit"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_margin="4dp"
+            android:layout_marginStart="8dp"
             android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:text="2 hours ago"/>
 
     </RelativeLayout>

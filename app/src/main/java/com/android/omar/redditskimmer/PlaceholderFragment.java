@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -66,6 +68,8 @@ public class PlaceholderFragment extends Fragment {
     @BindView(R.id.pager_num_comments) TextView pagerNumComments;
     @BindView(R.id.pager_score) TextView pagerScore;
     @BindView(R.id.comment_tree) TextView commentTree;
+    @BindView(R.id.adView)
+    AdView mAdView;
 
     private Unbinder unbinder;
 
@@ -95,6 +99,10 @@ public class PlaceholderFragment extends Fragment {
     }
 
     private void bindView(View rootView) {
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
+
         int pos = getArguments().getInt(Constants.EXTRA_LINK_POSITION);
 
         if (mCursor == null || mCursor.isClosed() || !mCursor.moveToPosition(pos))

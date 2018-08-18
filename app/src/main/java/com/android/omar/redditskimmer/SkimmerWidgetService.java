@@ -59,7 +59,7 @@ class SkimmerRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
     @Override
     public int getCount() {
-        return mCursor != null ? mCursor.getCount() : 0;
+        return mCursor != null ? 4 : 0;
     }
 
     @Override
