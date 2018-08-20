@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.omar.redditskimmer.RedditContract.*;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity
 
     private SubredditListAdapter mSubredditListAdapter;
     private PostsListAdapter mPostListAdapter;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @BindView(R.id.subreddit_list) ListView mSubredditListView;
     @BindView(R.id.posts_list) ListView mPostsListView;
     @BindView(R.id.search_box) EditText mSearchBox;
@@ -138,6 +142,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

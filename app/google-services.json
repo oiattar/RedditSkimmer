@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "993779717612",
+    "firebase_url": "https://redditskimmer.firebaseio.com",
+    "project_id": "redditskimmer",
+    "storage_bucket": "redditskimmer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993779717612:android:1c7a8641d3727f9f",
+        "android_client_info": {
+          "package_name": "com.android.omar.redditskimmer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993779717612-h01unqu5sk9q30ah8663j795fga3eu9f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.omar.redditskimmer",
+            "certificate_hash": "f5470d14fcdc633162d4e3436b28524dd014e598"
+          }
+        },
+        {
+          "client_id": "993779717612-t6drus4pau9tldek1m706rbpdp0j68k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeETcxcraE-ED-XihKBSc_ceRHvnBEsso"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993779717612-t6drus4pau9tldek1m706rbpdp0j68k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package com.android.omar.redditskimmer;
 
+import android.app.ActivityOptions;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -82,7 +83,12 @@ public class WebViewActivity extends AppCompatActivity {
         } else if (id == R.id.action_open_external) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(mUrl));
-            startActivity(intent);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+                startActivity(intent, bundle);
+            } else {
+                startActivity(intent);
+            }
             return true;
         } else if (id == R.id.action_copy_url) {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
