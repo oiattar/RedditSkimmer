@@ -50,16 +50,16 @@ public class SubredditListAdapter extends CursorAdapter {
     @Override
     public void bindView(final View view, Context context, Cursor cursor) {
         final boolean isSubscribed = cursor.getInt(MainActivity.COL_IS_SUBSCRIBER) == 1;
-        final String subrdtName = cursor.getString(MainActivity.COL_SUBREDDIT_NAME);
+        final String subredditName = cursor.getString(MainActivity.COL_SUBREDDIT_NAME);
         String highlightString = mActivity.getSearchString();
         final ViewHolder holder = (ViewHolder) view.getTag();
         holder.icon.setImageDrawable(ContextCompat.getDrawable(mActivity,
                 isSubscribed ? R.drawable.ic_check_black_24dp : R.drawable.ic_add_black_24dp));
-        highlightTextInTextView(holder.text, subrdtName, highlightString);
+        highlightTextInTextView(holder.text, subredditName, highlightString);
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                handleSubsriptionClick(v, !isSubscribed, subrdtName);
+                handleSubsriptionClick(v, !isSubscribed, subredditName);
             }
         });
     }
