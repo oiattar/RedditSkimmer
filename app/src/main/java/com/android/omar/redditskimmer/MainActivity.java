@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (mLoaderSearchMode != null && mLoaderSearchMode) {
-                    //Quite search results mode
+                    //Quit search results mode
                     setSubredditLoaderMode(false, null);
                     updateSearchUI(false);
                 } else { //Start new search
